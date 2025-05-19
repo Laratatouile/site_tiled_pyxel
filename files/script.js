@@ -13,11 +13,11 @@ function bg_color(){
 
 // ouvrir et fermer les parties
 function rap_ouv(number){
-    if (document.getElementById("somm"+number+"_1").style.display == "none") {
-        document.getElementById("somm"+number+"_1").style.display = "block";
+    if (document.getElementById("sommaire_"+number).style.display == "none") {
+        document.getElementById("sommaire_"+number).style.display = "block";
         document.getElementById("ouv_img_"+number).style.transform = 'rotate(90deg)';
     } else {
-        document.getElementById("somm"+number+"_1").style.display = "none";
+        document.getElementById("sommaire_"+number).style.display = "none";
         document.getElementById("ouv_img_"+number).style.transform = 'rotate(0deg)';
     }
 }

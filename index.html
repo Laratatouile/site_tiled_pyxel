@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Utilisation de tiled avec pyxel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./files/prism.css">
     <link rel="stylesheet" href="./files/style.css">
     <link rel="shortcut icon" href="./images/icone.ico" type="image/x-icon">
 </head>
@@ -13,38 +14,43 @@
         <p>navigation rapide</p>
     </div>
     <div id="panneau_droite" class="navigation_rapide">
-        <p class="somm0">Sommaire :</p>
+        <p class="sommaire_titre">Sommaire :</p>
         <div class="sommaire">
             <!-- Le sommaire -->
-            <div class="somm1">
+            <div class="sommaire_partie_titre">
                 <p>
                     <a href="#I">I) Presentation des outils</a>
                     <img id="ouv_img_1" onclick="rap_ouv(1)" src="./images/fleche.png" alt=">">
                 </p>
             </div>
-            <div id="somm1_1" class="somm1_1">
+            <div id="sommaire_1" class="sommaire_partie">
                 <p><a href="#I_1">1) Tiled</a></p>
                 <p><a href="#I_2">2) Pyxel</a></p>
             </div>
             <!-- partie 2 -->
-            <div class="somm2">
+            <div class="sommaire_partie_titre">
                 <p>
-                    <a href="#II">II) Implémentation de Tiled dans pyxel</a>
-                    <img id="ouv_img_2" onclick="rap_ouv_II()" src="./images/fleche.png" alt=">">
+                    <a href="#II">II) création de la carte tiled</a>
+                    <img id="ouv_img_2" onclick="rap_ouv(2)" src="./images/fleche.png" alt=">">
                 </p>
             </div>
-            <div id="somm2_1" class="somm2_1">
-                <p><a href="#II_1">etapes</a></p>
+            <div id="sommaire_2" class="sommaire_partie">
+                <p><a href="#II_1">1) créer un projet Tiled</a></p>
+                <p><a href="#II_2">2) créer un fichier de tuiles</a></p>
+                <p><a href="#II_3">3) importer le fichier de tuiles dans tiled</a></p>
+                <p><a href="#II_4">4) créer une carte de jeu</a></p>
+                <p><a href="#II_5">5) dessiner la carte</a></p>
+                <p><a href="#II_6">6) Les objets qui bougent</a></p>
             </div>
             <!-- partie 3 -->
-            <div class="somm3">
+            <div class="sommaire_partie_titre">
                 <p>
                     <a href="#III">III) Les autres pages</a>
-                    <img id="ouv_img_3" onclick="rap_ouv_III()" src="../images/fleche.png" alt=">">
+                    <img id="ouv_img_3" onclick="rap_ouv(3)" src="./images/fleche.png" alt=">">
                 </p>
             </div>
-            <div id="somm3_1" class="somm3_1">
-                <p><a href="./pages/exemple_code.html">1) La page d'exemples</a></p>
+            <div id="sommaire_3" class="sommaire_partie">
+                <p><a href="./exemple_code.html">1) La page d'exemples</a></p>
             </div>
         </div>
     </div>
@@ -59,6 +65,9 @@
         <!-- La totalité de la page -->
         <div class="conteneur">
             <!-- Les parties -->
+
+            <!-- partie 1 -->
+
             <h1 id="I">I) Presentation des outils</h1>
             <div class="partie">
                 <div id="I_1" class="sous_partie">
@@ -69,13 +78,13 @@
                     </div>
                     <div class="partie_texte">
                         <p>
-                            Tiled est un editeur de cartes pour plusieurs types de moteurs graphiques 2D. <br>
-                            Il est souvent utilisé pour créer des cartes avec des objects pour pygame. <br>
-                            Mais ce logiciel peut être utilisé pour Pyxel. <br>
-                            Il faudra télécharger le logiciel. <br>
-                            <span class="bouton_span"><a href="https://thorbjorn.itch.io/tiled/purchase">téléchargeable ici</a></span> et cliquer sur "No thanks".
-                            ensuite il faudra l'installer. <br>
-                            Tiled à une interface simple mais rudimentaire.
+                            - Tiled est un editeur de cartes pour plusieurs types de moteurs graphiques 2D. <br>
+                            - Il est souvent utilisé pour créer des cartes avec des objects pour pygame. <br>
+                            - Mais ce logiciel peut être utilisé pour Pyxel. <br>
+                            - Il faudra télécharger le logiciel. <br>
+                            - <span class="bouton_span"><a href="https://thorbjorn.itch.io/tiled/purchase">téléchargeable ici</a></span> et cliquer sur "No thanks".
+                            - ensuite il faudra l'installer. <br>
+                            - Tiled possede une interface simple mais rudimentaire.
                         </p>
                     </div>
                 </div>
@@ -87,58 +96,290 @@
                     </div>
                     <div class="partie_texte">
                         <p>
-                            Pyxel est un moteur graphiques pour les jeux retros qui permet de créer des jeux simple. <br>
-                            Le probleme de Pyxel est que son éditeur est trop simple et qu'il ne permet pas de faire des grands dessins simmplement. <br>
-                            Pour régler ce probleme nous allons faire des cartes tiled qui sont plus simples à créer. <br>
-                            Pyxel est un moteur de jeu en 16 couleurs, bien que modifiables cela reste très limité pour les graphismes. <br>
+                            - Pyxel est un moteur graphiques pour les jeux retros qui permet de créer des jeux simple. <br>
+                            - Le probleme de Pyxel est que son éditeur est trop simple et qu'il ne permet pas de faire des grands dessins simmplement. <br>
+                            - Pour régler ce probleme nous allons faire des cartes tiled qui sont plus simples à créer. <br>
+                            - Pyxel est un moteur de jeu en 16 couleurs, bien que modifiables cela reste très limité pour les graphismes. <br>
                         </p>
                     </div>
                 </div>
             </div>
-            <h1 id="II">II) Explication breve du code</h1>
+            <h1 id="II">II) création de la carte tiled</h1>
             <div class="partie">
                 <div id="II_1" class="sous_partie">
                     <div class="partie_titre">
                         <p>
-                            1) Le fichier main
+                            1) créer un projet Tiled
                         </p>
                     </div>
                     <div class="partie_texte">
                         <p>
-                            C'est celui qui va executer les differentes instances et il va aussi initailiser les viriables de base.
+                            - C'est depuis ce projet que l'on va pouvoir travailler. <br>
+                            - Depuis l'interface de lancement de tiled cliquer sur Nouveau projet. <br>
+                            - Séléctionnez ensuite là ou il faut le stocker.
                         </p>
                     </div>
                 </div>
+
+                <!-- partie 2 -->
+
                 <div id="II_2" class="sous_partie">
                     <div class="partie_titre">
                         <p>
-                            2) Les fichiers de fonctions
+                            2) créer un fichier de tuiles
                         </p>
                     </div>
                     <div class="partie_texte">
                         <p>
-                            Ce sont les fichiers qui s'occupent de taches comme par exemple le chiffrement des sauvgardes, les ouvertures de fichiers et la récupération des touches associées aux actions.
+                            - Ce sont les fichiers qui vont contenir les tuiles d'images. <br>
+                            - Ces fichiers peuvent être crées a partir d'un logitiel de création d'images comme gimp ou paint. <br>
+                            - Vous devez vous fixer une taille de tuile de preference carrée pour se simplifier la tache. <br>
+                            - Attention votre image doit être de maximum 256 pixels sur 256 pixels pour pouvoir se charger correctement dans pyxel. <br>
                         </p>
                     </div>
                 </div>
-                <div id="II_3" class="sous_partie_fin">
+                <div id="II_3" class="sous_partie">
                     <div class="partie_titre">
                         <p>
-                            3) Les fichiers d'objects
+                            3) importer le fichier de tuiles dans tiled
                         </p>
                     </div>
                     <div class="partie_texte">
                         <p>
-                            Ce sont les fichiers qui s'occupent de calculer objects et des decors. Il y en a un spécialisé dans l'affichage pyxel avec plein de parametres.
+                            - Dans tiled allez sous la rubrique "Fichier" puis "Nouveau" et enfin sur "Nouveau jeu de tuiles". <br>
+                            - Puis donnez lui un nom, séléctionnez votre jeux de tuiles et la taille des tuiles. <br>
+                            - Enregsitrez la dans votre dossier racine de tiled. Ce fichier pourra être supprimé a la fin du projet. <br>
                         </p>
+                    </div>
+                </div>
+                <div id="II_4" class="sous_partie">
+                    <div class="partie_titre">
+                        <p>
+                            4) créer une carte de jeu
+                        </p>
+                    </div>
+                    <div class="partie_texte">
+                        <p>
+                            - La carte de jeu est l'arriere plan de votre jeu, elle est fixe. <br>
+                            - Pour créer une carte avec tiled sous la rubrique "Fichier" puis "Nouveau" et enfin sur "Nouvelle carte" ou CTRL + N. <br>
+                        </p>
+                    </div>
+                </div>
+                <div id="II_5" class="sous_partie">
+                    <div class="partie_titre">
+                        <p>
+                            5) dessiner la carte
+                        </p>
+                    </div>
+                    <div class="partie_texte">
+                        <p>
+                            - Les banques d'images sont disponibles en bas a droite de la fenetre. <br>
+                            - Vous pouvez éditer la carte avec les outils de tiled. <br>
+                            - Une fois finie vous n'avez pas besoin de l'enregsitrer mais de l'exporter. <br>
+                            - Pour cela CTRL + E et donnez lui un nom puis ajoutez lui ".json" pour l'exporter dans le format JSON. <br>
+                        </p>
+                    </div>
+                </div>
+                <div id="II_6" class="sous_partie_fin">
+                    <div class="partie_titre">
+                        <p>
+                            6) Les objets qui bougent
+                        </p>
+                    </div>
+                    <div class="partie_texte">
+                        <p>
+                            - Tiled ne permet pas simplement de faire des objets en mouvement. <br>
+                            - Créez vos object comme le joueur dans une image comme pour les cartes. <br>
+                            - Nous importerons les objets depuis pyxel directement.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- partie 3 -->
+
+            <h1 id="III">III) chargement des objects nécéssaires a Pyxel</h1>
+            <div class="partie">
+                <div class="sous_partie" id="III_1">
+                    <div class="partie_titre">
+                        <p>
+                            1) Prérequis
+                        </p>
+                    </div>
+                    <div class="partie_texte">
+                        - Pour charger les objets nécéssaires a pyxel vous avez besoin:
+                        <ul>
+                            <li>
+                                du chemin relatif entre le fichier python et les jeux de tuiles ou de personnages.
+                            </li>
+                            <li>
+                                du chemin relatif entre le fichier python et les fichiers json.
+                            </li>
+                            <li>
+                                de charger les images dans la mémoire du script pyxel.
+                            </li>
+                            <li>
+                                de la blibliothèque json de python.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sous_partie_fin">
+                    <div class="partie_titre" id="III_2">
+                        <p>
+                            2) importations et variables
+                        </p>
+                    </div>
+                    <div class="partie_texte">
+                        - Vous devez commencer par importer la blibliothèque json avec:
+                        <pre>
+                            <code class="language-python">
+                                import json
+                            </code>
+                        </pre>
+                        <br>
+                        - Vous devez aussi stocker les path relatifs aux fichiers dans des variables. <br>
+                        <pre>
+                            <code class="language-python">
+                                path_image = "./Mon image.jpg"
+                                carte_json = json.load("./path/vers/le/json.json")
+                            </code>
+                        </pre>
+                        - Vous pouvez avoir des types de fichier d'image differents comme du png.
+                    </div>
+                </div>
+            </div>
+
+            <!-- partie 4 -->
+
+            <h1 id="IV">IV) affichage dans pyxel</h1>
+            <div class="partie">
+                <div class="sous_partie" id="IV_1">
+                    <div class="partie_titre">
+                        <p>
+                            1) Le code pour le lancement pour les cartes
+                        </p>
+                    </div>
+                    <div class="partie_texte">
+                        - Le code peut parraitre un peu barbare mais pour les conaisseurs il reste tout a fair clair.
+                        - Nous allons faire une fonction pour simlifier la tache.
+                        <pre>
+                            <code class="language-python">
+                                def affichage_carte(data_carte):
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+                <div class="sous_partie" id="IV_2">
+                    <div class="partie_titre">
+                        <p>
+                            2) importations et variables
+                        </p>
+                    </div>
+                    <div class="partie_texte">
+                        - Vous devez commencer par importer la blibliothèque json avec:
+                        <pre>
+                            <code class="language-python">
+                                import json
+                            </code>
+                        </pre>
+                        <br>
+                        - Vous devez aussi stocker les path relatifs aux fichiers dans des variables. <br>
+                        <pre>
+                            <code class="language-python">
+                                path_image = "./Mon image.jpg"
+                                path_json = "./Mon json.json"
+                            </code>
+                        </pre>
+                        - Vous pouvez avoir des types de fichier d'image differents comme du png.
+                    </div>
+                </div>
+                <div class="sous_partie" id="IV_3">
+                    <div class="partie_titre">
+                        3) script d'affichage des cartes
+                    </div>
+                    <div class="patie_texte">
+                        - La fonction qui permet d'afficher une carte tiled sous pyxel est celle-ci. <br>
+                        - Elle est modifiable facilement si on la comprend. <br>
+                        <pre>
+                            <code class="language-python">
+                                def draw_carte(data_carte:dict, path_image:str) -> None:
+                                    """ Affiche la carte à l'écran en utilisant les données de Tiled et Pyxel """
+                                    for i in range(len(data_carte[0]["layers"])):
+                                        # calcul des differentes variables pour l'affichage
+                                        layer = data_carte[0]["layers"][i]
+                                        width, height = layer["width"], layer["height"]
+                                        decalage_x = (data_carte[0]["layers"][i]["offsetx"] if "offsetx" in data_carte[0]["layers"][i].keys() else 0)
+                                        decalage_y = (data_carte[0]["layers"][i]["offsety"] if "offsety" in data_carte[0]["layers"][i].keys() else 0)
+
+
+                                        pyxel.images[0].load(0, 0, path_image)
+                                                            
+
+                                        # affichage des tuiles une par une
+                                        for y in range(height):
+                                            for x in range(width):
+                                                tuile = layer["data"][y * width + x]
+                                                if tuile == 0:
+                                                    continue
+                                                tuile -= 1
+
+                                                pyxel.blt(
+                                                    x * votre largeur de tuile + decalage_x,
+                                                    y * votre hauteur de tuile + decalage_y,
+                                                    0,
+                                                    u,
+                                                    v,
+                                                    tile_width,
+                                                    tile_height
+                                                    )
+
+                                    return None
+
+                            </code>
+                        </pre>
+                        - data_carte et path image sont les variables crées plus tot. <br>
+                        - Analysons ensemble le code:
+                        <ul>
+                            <li>
+                                la première partie se charge des variables
+                            </li>
+                            <li>
+                                la deuxième se charge d'itérer chaque tuile de la carte
+                            </li>
+                            <li>
+                                la boucle calcule ensuite l'id de la tuile et affiche la tuile correspondante
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sous_partie_fin">
+                    <div class="partie_titre">
+                        4) script d'affichage des objects
+                    </div>
+                    <div class="partie_texte">
+                        - L'affichage des objects est un petit peu différent de celui des cartes mais surtout moins long
+                        <pre>
+                            <code class="language-python">
+                                def draw_object(path_image:str, id_image:int, x:int, y:int) -> None:
+                                    pyxel.images[2].load(0, 0, path_image)
+                                    pyxel.blt(x, y, 2, (id_image % 5)*50, (id_image // 5)*50, 50, 50, colkey=14)
+                                    return None
+
+                            </code>
+                        </pre>
+                        - l'image path est l'emplacement relatif de l'image. <br>
+                        - L'id de l'image est le numéro de l'image sur la grille (la première est notée 0). <br>
+                        - x et y les positions de l'object. <br>
+                        - vous pouvez changer la dernière variable du pyxel.blt c'est celle qui fait la couleur de transparence si vous ne voulez pas de transparence retirez la.
                     </div>
                 </div>
             </div>
             <br><br><br><br>
             <!-- La barre du bas -->
             <div class="bande_bas">
-                <div class="NMEA">
-                    La pomme de terre c'est super
+                <div class="titre_bas">
+                    Utilisation de Tiled avec pyxel
                 </div>
                 <div class="maxime">
                     Maxime GEOFFROY
@@ -147,6 +388,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="text/Javascript" src="./files/prism.js"></script>
     <script type="text/Javascript" src="./files/script.js"></script>
 </body>
 </html>
